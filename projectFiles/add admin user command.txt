@@ -1,0 +1,20 @@
+db.getSiblingDB("products").runCommand( { createUser: "accountAdmin01",
+                                          pwd: "cleartext password",
+                                          customData: { employeeId: 12345 },
+                                          roles: [
+                                                   { role: "clusterAdmin", db: "admin" },
+                                                   { role: "readAnyDatabase", db: "admin" },
+                                                   "readWrite"
+                                                 ],
+                                          writeConcern: { w: "majority" , wtimeout: 5000 }
+                                       } )
+
+
+db.createUser({user:"adminUser",pwd: "abc123",roles:[{ role: "userAdminAnyDatabase", db: "admin" }]}
+
+userAdminAnyDatabase
+readWrite
+db.createUser({user:"adminUser",pwd:"abc123",roles:[]})
+db.grantRolesToUser("adminUser",[userAdminAnyDatabase]})
+                              
+

@@ -1,0 +1,58 @@
+﻿@model IList<MVCWithMongo.Models.UserModel>
+
+@{
+    ViewBag.Title = "GetUsers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>GetUsers</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Registration")
+</p>
+
+<table border="1" width="100%" ID="Table2" >
+    <tr>
+        <th>
+            <h4>User</h4>
+        </th>
+        <th>
+            <h4>Password</h4>
+        </th>
+        <th>
+            <h4>Email</h4>
+        </th>
+        <th>
+            <h4>Phone</h4>
+        </th>
+        <th>
+           <h4>Aaddress</h4>
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Password)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhoneNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new {  id=@item.UserGuidID  }) |
+            @Html.ActionLink("Delete", "Delete", new {  id=@item.UserGuidID  })
+        </td>
+    </tr>
+}
+
+</table>
